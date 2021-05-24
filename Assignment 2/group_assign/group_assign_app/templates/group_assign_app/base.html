@@ -18,13 +18,15 @@
     <h3>Conner Mostert s233186</h3>
     <h3>Rhys Boyar s251100</h3>
     <h3>Fahmee Ahmed s348208</h3>
-    <h3>Gaurab XXXXX sxxxxxx</h3>
+    <h3>Gaurab Dhakal s338052</h3>
     <nav>
       <a href="{% url 'home'%}">Home</a>
-      <a href="{% url 'listJobs' %}">List all jobs</a>
-      <a href="{% url 'jobs' %}">Create a job ad</a>
       <a href="{% url 'ShowEmployee' %}">List All Employees</a>
       <a href="{% url 'loadEmployee' %}">Add New Employee</a>
+      <a href="{% url 'ShowEmployer' %}">List All Employers</a>
+      <a href="{% url 'loadEmployer' %}">Add New Employer</a>
+      <a href="{% url 'listJobs' %}">List all jobs</a>
+      <a href="{% url 'jobs' %}">Create a job ad</a>
       <a href="{% url 'AppliedAplicants' %}">Applied Aplicant</a>
     </nav>
     {% block home %}{% endblock %}
@@ -32,8 +34,11 @@
     {% block createJobs %}{% endblock %}
     {% block updateJobs %}{% endblock %}
     {% block Add_Employee %}{% endblock %}
-    {% block Edit_EmployeeJobs %}{% endblock %}
+    {% block Edit_Employee %}{% endblock %}
     {% block Show_EmployeeJobs %}{% endblock %}
+    {% block Add_Employer %}{% endblock %}
+    {% block Show_Employers %}{% endblock %}
+    {% block Edit_Employer %}{% endblock %}
     {% block AppliedAplicants %}{% endblock %}
   </body>
 </html>

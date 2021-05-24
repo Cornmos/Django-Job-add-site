@@ -88,17 +88,6 @@ def load_AppliedAplicants(request):
 
     return render(request, 'group_assign_app/AppliedAplicants.html', form_data)
 
-def load_AppliedAplicants2(request):
-
-    formtype=2
-    form_data = {'AppliedForm': Applied_Aplicant_Form2() , 'formtype': formtype }
-
-    return render(request, 'group_assign_app/AppliedAplicants.html', form_data)
-
-"""def load_AppliedAplicants3(request):
-    formtype=3
-    form_data = {'AppliedForm': Applied_Aplicant_Form1() , 'formtype': formtype }
-    return render(request, 'group_assign_app/AppliedAplicants.html', form_data)"""
 
 def load_AppliedAplicants4(request):
 
@@ -116,14 +105,13 @@ def new_Applied_Aplicant(request):
         page_data={}
         form = Applied_Aplicant_Form1(request.POST)
         if form.is_valid():
-            save_new_form(form)
+            form.save()
             return HttpResponseRedirect('/SearchApplied/')
         else:
             page_data = {'val_errors': form.errors,}
     return render(request, 'group_assign_app/home.html', page_data)
 
-def save_new_form(form):
-    object1 = form.save()
+
 
 
 
@@ -132,9 +120,9 @@ def Update_Aplied_Aplicant(request):
         return HttpResponseRedirect('/AppliedAplicants2/')
     else:
         page_data={}
-        form = Applied_Aplicant_Form2(request.POST)
+        form = Applied_Aplicant_Form3(request.POST)
         if form.is_valid():
-            save_new_form(form)
+            form.save()
             return HttpResponseRedirect('/home/')
         else:
             page_data = {'val_errors': form.errors,}
@@ -145,7 +133,7 @@ def Search_Applied_Aplicant(request):
     formtype=3
     return render(request,'group_assign_app/AppliedAplicants.html',{'Apps' : Apps, 'formtype': formtype })
 
-    
+
 
 
 def Del_Aplied_Aplicant(request):
@@ -162,3 +150,37 @@ def Del_Aplied_Aplicant(request):
         else:
             page_data = {'val_errors': form.errors,}
     return render(request, 'group_assign_app/base.html', page_data)
+
+#created by gaurab
+
+def load_emplo_form(request):
+    form = EmployerForm
+    return render(request, "group_assign_app/Employer/employerform.html", {'form': form})
+
+def add_emplo_form(request):
+    form = EmployerForm(request.POST)
+    form.save()
+    return HttpResponseRedirect(reverse('ShowEmployer'))
+
+
+def show_emplo_form(request):
+    emplo = Employer.objects.all
+    return render(request, "group_assign_app/Employer/Show_emplo.html", {'Employer': emplo})
+
+
+def edit_emplo_form(request, id):
+    emplo = Employer.objects.get(emplo_id=id)
+    return render(request, "group_assign_app/Employer/Edit_emplo.html", {'Employer': emplo})
+
+
+def update_emplo_form(request, id):
+    emplo = Employer.objects.get(emplo_id=id)
+    form = EmployerForm(request.POST, instance = emplo)
+    form.save()
+    return HttpResponseRedirect(reverse('ShowEmployer'))
+
+def delete_emplo_form(request, id):
+    emp = Employer.objects.get(emplo_id=id)
+    emp.delete()
+    return render(request,'group_assign_app/home.html')
+
