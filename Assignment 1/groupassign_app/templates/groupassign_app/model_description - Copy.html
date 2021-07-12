@@ -1,0 +1,35 @@
+{% extends "groupassign_app/base.html"%}
+{% block title %}Model Description{% endblock %}
+{% block details %}
+<h3>Model Description:</h3>
+<p>What is it called: Subject Code </p>
+<p>What its purpose is: Primary key to the database it identifies the object.</p>
+<p>Data type: String </p>
+<p>Any validation or constraint requirements: Consists of 3 letter and 3 numbers. The subject code must be places in the
+subjectCatalogue list</p>
+<br><br>
+
+<p>What is it called: Subject Name </p>
+<p>What its purpose is: Identifies what the subject is called </p>
+<p>Data type: String </p>
+<p>Any validation or constraint requirements: Consists of only ASCII letters </p>
+<br><br>
+
+<p>What is it called: Semester </p>
+<p>What its purpose is: Indicates What semester the subject is being tought </p>
+<p>Data type: Integer</p>
+<p>Any validation or constraint requirements: must be an integer value. Summer Semester is indicated as Semester 3.</p>
+<br><br>
+
+<p>What is it called: Discipline</p>
+<p>What its purpose is: It describe's the department where the subject is tought.(Engineering or IT) It acts as a foreign key.</p>
+<p>Data type: String </p>
+<p>Any validation or constraint requirements: Must have a corasponding value in the second table to work as a foreign key.</p>
+<br><br>
+
+<p>What is it called: Description </p>
+<p>What its purpose is: Describes what will be tought in the subject. </p>
+<p>Data type: String </p>
+<p>Any validation or constraint requirements: none </p>
+<br><br>
+{%endblock%}

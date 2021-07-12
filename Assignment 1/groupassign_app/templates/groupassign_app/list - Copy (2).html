@@ -1,0 +1,18 @@
+{% extends "groupassign_app/base.html"%}
+
+{% block title %}List{%endblock%}
+
+{%block classitems %}
+<table style="width:30%">
+  <tr>
+    <th>Subject Code</th>
+    <th>Subject</th>
+    </tr>
+    {% for sub in subjectCatalogue %}
+        <tr>
+          <td><a style="padding:20%" href="{% url 'details' subjectId=sub.subjectCode %}">{{sub.subjectCode}}</a></td>
+          <td><p style="padding:3px">{{sub.subjectName}}</p></td>
+        </tr>
+    {%endfor%}
+    </table>
+{% endblock %}
